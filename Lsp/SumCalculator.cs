@@ -11,7 +11,12 @@ namespace Lsp
             _numbers = numbers;
         }
 
-        public int Calculate()
+        //public int Calculate()
+        //{
+        //    return _numbers.Sum();
+        //}
+
+        public virtual int Calculate()
         {
             return _numbers.Sum();
         }

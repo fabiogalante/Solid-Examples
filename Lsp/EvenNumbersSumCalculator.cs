@@ -13,7 +13,7 @@ namespace Lsp
         {
         }
 
-        public new int Calculate()
+        public override int Calculate()
         {
             return _numbers.Where(x => x % 2 == 0).Sum();
         }
