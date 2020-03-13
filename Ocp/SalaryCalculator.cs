@@ -4,11 +4,19 @@ namespace Ocp
 {
     public class SalaryCalculator
     {
-        private readonly IEnumerable<DeveloperReport> _developer;
+        //private readonly IEnumerable<DeveloperReport> _developer;
 
-        public SalaryCalculator(IEnumerable<DeveloperReport> developer)
+        //public SalaryCalculator(IEnumerable<DeveloperReport> developer)
+        //{
+        //    _developer = developer;
+        //}
+
+
+        private readonly IEnumerable<BaseSalaryCalculator> _developerCalculation;
+
+        public SalaryCalculator(IEnumerable<BaseSalaryCalculator> developerCalculation)
         {
-            _developer = developer;
+            _developerCalculation = developerCalculation;
         }
 
 
@@ -17,17 +25,22 @@ namespace Ocp
             double totalSalaries = 0D;
 
 
-            foreach (var developerReport in _developer)
-            {
-                if (developerReport.Level == "Senior developer")
-                {
-                    totalSalaries += developerReport.HourlyRate * developerReport.WorkingHours * 1.2;
-                }
-                else
-                {
-                    totalSalaries += developerReport.HourlyRate * developerReport.WorkingHours;
-                }
+            //foreach (var developerReport in _developer)
+            //{
+            //    if (developerReport.Level == "Senior developer")
+            //    {
+            //        totalSalaries += developerReport.HourlyRate * developerReport.WorkingHours * 1.2;
+            //    }
+            //    else
+            //    {
+            //        totalSalaries += developerReport.HourlyRate * developerReport.WorkingHours;
+            //    }
 
+            //}
+
+            foreach (var devCalc in _developerCalculation)
+            {
+                totalSalaries += devCalc.CalculateSalary();
             }
 
             return totalSalaries;
@@ -55,5 +68,17 @@ namespace Ocp
         This is totally against of what OCP stands for.
          */
 
+
+
+        /*
+        This looks so much better because we won’t have to change any of our 
+        current classes if our boss comes with another request about the intern
+        payment calculation or any other as well.
+
+        All we have to do now is to add another class with its own calculation logic. 
+        So basically, our SalaryCalculator class is now closed for modification and 
+        opened for an extension, which is exactly what OCP states.
+
+        */
     }
 }
