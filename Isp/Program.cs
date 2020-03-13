@@ -26,5 +26,25 @@ namespace Isp
         declarations should be split up into smaller interfaces.
 
         */
+
+
+
+
+
+
+        /*
+
+        What are the Benefits of the Interface Segregation Principle
+        We can see from the example above, that smaller interface is a lot easier
+        to implement due to not having to implement methods that our class doesn’t need.
+
+        Of course, due to the simplicity of our example, we can make a single 
+        interface with a single method inside it. But in real-world projects, we often come up with an interface with multiple methods, which is perfectly normal as long as those methods are highly related to each other. Therefore, we make sure that our class needs all these actions to complete its task.
+
+        Another benefit is that the Interface Segregation Principle increases the readability 
+        and maintainability of our code. We are reducing our class implementation only to 
+        required actions without any additional or unnecessary code.
+
+        */
     }
 }

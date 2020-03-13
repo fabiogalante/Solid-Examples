@@ -2,7 +2,7 @@
 
 namespace Isp
 {
-    public class MultiFunctionalCar : ICar, IAirplane // IVehicle
+    public class MultiFunctionalCar2 : IMultiFunctionalVehicle
     {
         public void Drive()
         {
