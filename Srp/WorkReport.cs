@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace Srp
@@ -32,30 +31,30 @@ namespace Srp
 
         private readonly List<WorkReportEntry> _entries;
 
-        public WorkReport(List<WorkReportEntry> entries)
+        public WorkReport()
         {
-            _entries = entries;
+            _entries = new List<WorkReportEntry>();
         }
 
         public void AddEntry(WorkReportEntry entry) => _entries.Add(entry);
 
         public void RemoveEntryAt(int index) => _entries.RemoveAt(index);
 
-        public void SaveToFile(string directoryPath, string fileName)
-        {
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-
-            File.WriteAllText(Path.Combine(directoryPath, fileName), ToString());
-        }
-
         public override string ToString() =>
             string.Join(Environment.NewLine, _entries.Select(x => $"Code: {x.ProjectCode}, Name: {x.ProjectName}, Hours: {x.SpentHours}"));
 
 
-       
+
+        /*
+        In this case, we have separated our responsibilities in two classes. The WorkReport 
+        class is now responsible for keeping track of work report entries and the FileSaver class is responsible for saving a file.
+
+        Having done this, we have separated the concerns of each class thus making 
+        them more readable and maintainable as well. As a result, if we want to 
+        change how we save a file, we only have one reason to do that and one place 
+        to do it, which is the FileSaver class.
+        */
+
     }
 }
-}
+
